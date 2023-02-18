@@ -4,23 +4,66 @@ import { motion } from "framer-motion";
 import { images } from "../../constants";
 import "./Header.scss";
 
+const scaleVariants = {
+  whileInView: {
+    scale: [0, 1],
+    opacity: [0, 1],
+    transition: {
+      duration: 1,
+      ease: "easeInOut",
+    },
+  },
+};
+
 export const Header = () => {
   return (
-    <div className='app__header app__flex'>
+    <div id='home' className='app__header app__flex'>
       <motion.div
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
         className='app__header-info'
       >
         <div className='app__header-badge'>
-          <div className='badge-cmp app-flex'>
+          <div className='badge-cmp'>
             <span>👋</span>
             <div style={{ marginLeft: 20 }}>
               <p className='p-text'>Hello, I am</p>
               <h1 className='head-text'> AMR </h1>
             </div>
           </div>
+
+          <div className='badge-cmp tag-cmp'>
+            <p className='p-text'>Software Engineer</p>
+            <p className='p-text'>working @Accenture</p>
+          </div>
         </div>
+      </motion.div>
+
+      <motion.div
+        whileInView={{ opacity: [0, 1] }}
+        transition={{ duration: 0.5, delayChildren: 0.5 }}
+        className='app__header-img'
+      >
+        <img src={images.profile} alt='profile_pg' />
+        <motion.img
+          whileInView={{ scale: [0, 1] }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          src={images.circle}
+          alt='profile_circle'
+          className='overlay_circle'
+        />
+      </motion.div>
+
+      <motion.div
+        variants={scaleVariants}
+        whileInView={scaleVariants.whileInView}
+        className='app__header-circles'
+      >
+        {[images.flutter, images.redux, images.sass].map((circle, index) => (
+          <div className='circle-cmp app__flex' key={`circle-${index}`}>
+            <img src={circle} alt='circle' />
+          </div>
+        ))}
       </motion.div>
     </div>
   );
