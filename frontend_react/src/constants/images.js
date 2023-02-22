@@ -35,7 +35,12 @@ import nb from "../assets/nb.png";
 import skype from "../assets/skype.png";
 import spotify from "../assets/spotify.png";
 
+import amr from "../assets/amr.png";
+import amrProfile from "../assets/amr-profile.png";
+
 const images = {
+  amrProfile,
+  amr,
   email,
   mobile,
   api,
