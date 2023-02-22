@@ -37,8 +37,10 @@ import spotify from "../assets/spotify.png";
 
 import amr from "../assets/amr.png";
 import amrProfile from "../assets/amr-profile.png";
+import amrLogo from "../assets/amr-logo.png";
 
 const images = {
+  amrLogo,
   amrProfile,
   amr,
   email,
