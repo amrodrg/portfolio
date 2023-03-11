@@ -1,33 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-import { images } from "../../constants";
 import "./About.scss";
 import { client, urlFor } from "../../client";
 import AppWrap from "../../wrapper/AppWrap";
-
-const abouts = [
-  {
-    title: "Frontend Development",
-    description: "I am a good developer",
-    imgUrl: images.about01,
-  },
-  {
-    title: "Backend Development",
-    description: "I am a good developer",
-    imgUrl: images.about02,
-  },
-  {
-    title: "Mobile App Development",
-    description: "I am a good developer",
-    imgUrl: images.about03,
-  },
-  {
-    title: "AI Development",
-    description: "I am a good developer",
-    imgUrl: images.about04,
-  },
-];
+import MotionWrap from "../../wrapper/MotionWrap";
 
 const About = () => {
   const [abouts, setAbouts] = useState([]);
@@ -55,7 +32,7 @@ const About = () => {
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.5, type: "tween" }}
             className='app__profile-item'
-            index={about.title + index}
+            key={about.title + index}
           >
             <img src={urlFor(about.imgUrl)} alt={about.title} />
             <h2 className='bold-text' style={{ marginTop: 20 }}>
@@ -71,4 +48,8 @@ const About = () => {
   );
 };
 
-export default AppWrap(About, "about");
+export default AppWrap(
+  MotionWrap(About, "app__about"),
+  "about",
+  "app__whitebg"
+);

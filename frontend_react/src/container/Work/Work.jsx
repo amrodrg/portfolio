@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import "./Work.scss";
 import { useEffect } from "react";
 import { client, urlFor } from "../../client";
-import AppWrap from "../../wrapper/AppWrap";
+import { AppWrap, MotionWrap } from "../../wrapper";
 
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -121,4 +121,8 @@ const Work = () => {
   );
 };
 
-export default AppWrap(Work, "work");
+export default AppWrap(
+  MotionWrap(Work, "app__works"),
+  "work",
+  "app__primarybg"
+);
